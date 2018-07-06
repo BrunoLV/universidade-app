@@ -1,0 +1,46 @@
+<div class='row'>
+  <div class='col-md-1'>
+    <button placement='bottom' ngbTooltip='Novo' class='btn btn-block btn-outline-primary' (click)='newAluno()'>
+      <i class="fa fa-plus"></i>
+    </button>
+  </div>  
+</div>
+<br/>
+<div class='row'>
+  <div class='col-md-12'>
+    <table *ngIf='alunos' class='table table-hover table-striped'>
+      <caption>Lista de Alunos</caption>
+      <thead class='thead-light'>
+        <tr>
+          <th colspan=2></th>
+          <th>Nome</th>
+          <th>Documento</th>
+          <th>Matrícula</th>
+          <th>Telefone</th>
+          <th>Ativo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor='let aluno of alunos'>
+          <td style='text-align: center; width: 8%;'>
+            <button placement='top' ngbTooltip='Editar' (click)='editAluno(aluno)' class="btn btn-block btn-outline-primary">
+              <i class="fa fa-edit"></i>
+            </button>
+          </td>
+          <td style='text-align: center; width: 8%;'>
+            <button placement='top' ngbTooltip='Excluir' (click)='deleteAluno(aluno)' class="btn btn-block btn-outline-danger">
+              <i class="fa fa-trash"></i>
+            </button>
+          </td>
+          <td style='width: 30%;'>{{aluno.nome}}</td>
+          <td>{{aluno.documento}}</td>
+          <td>{{aluno.matricula}}</td>
+          <td>{{aluno.telefone}}</td>
+          <td style='width: 5%; text-align: center;'>{{aluno.ativo | simNao}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+

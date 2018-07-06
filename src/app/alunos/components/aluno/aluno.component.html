@@ -1,0 +1,79 @@
+<form [formGroup]='alunoForm' (submit)='save()'>
+  <div class='card bg-light'>
+    <div class="card-header">Cadastro de Aluno</div>
+
+    <div class='card-body'>
+      <p class='card-text'>Manipulação de dados de alunos.</p>
+
+      <fieldset>
+        <legend>
+          <i placement='top' ngbTooltip='vermelho para inativo e azul para ativo' [ngClass]="{
+          'fa fa-window-close-o redIcon':!alunoForm.value.ativo && alunoForm.value.uuid,
+          'fa fa-check-square-o greenIcon':alunoForm.value.ativo && alunoForm.value.uuid,
+          'fa fa-file-text-o new':!alunoForm.value.uuid
+        }" aria-hidden="true"></i> Dados do aluno {{alunoForm.value.nome}}
+        </legend>
+        <div class='row' *ngIf='alunoForm.value.uuid'>
+          <div class='col-md-12'>
+            <div class='form-group'>
+              <label for='uuid'>UUID</label>
+              <input id='uuid' class='form-control' formControlName='uuid' readonly>
+            </div>
+          </div>
+        </div>
+        <div class='row'>
+          <div class='col-md-3'>
+            <div class='form-group'>
+              <label for='nome'>Nome</label>
+              <input id='nome' class='form-control' formControlName='nome'>
+            </div>
+          </div>
+          <div class='col-md-3'>
+            <div class='form-group'>
+              <label for='documento'>Documento</label>
+              <input id='documento' class='form-control' formControlName='documento'>
+            </div>
+          </div>
+          <div class='col-md-3' *ngIf='alunoForm.value.matricula'>
+            <div class='form-group'>
+              <label for='matricula'>Matrícula</label>
+              <input id='matricula' class='form-control' formControlName='matricula' readonly>
+            </div>
+          </div>
+          <div class='col-md-3'>
+            <div class='form-group'>
+              <label for='telefone'>Telefone</label>
+              <input id='telefone' class='form-control' formControlName='telefone'>
+            </div>
+          </div>
+        </div>
+
+        <div class='row'>
+          <div class='col-md-3'>
+            <div class='form-group'>
+              <label for='email'>Email</label>
+              <input id='email' type='email' class='form-control' formControlName='email'>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+
+    </div>
+
+    <div class="card-footer">
+      <div class='row'>
+        <div class='col-md-10'></div>
+        <div class='col-md-1'>
+          <button type="submit" class="btn btn-block btn-outline-primary" placement='bottom' ngbTooltip='Salvar'>
+            <i class="fa fa-floppy-o" aria-hidden="true"></i>
+          </button>
+        </div>
+        <div class='col-md-1'>
+          <button type="button" class="btn btn-block btn-outline-secondary" routerLink='/alunos' placement='bottom' ngbTooltip='Retornar'>
+            <i class="fa fa-arrow-left" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
