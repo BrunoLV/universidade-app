@@ -12,6 +12,7 @@ export class AlunoComponent implements OnInit {
 
   alunoForm: FormGroup;
   uuidEdit: string;
+  message: string;
 
   constructor(private alunoService: AlunosService, private formBuilder: FormBuilder,
     private router: Router, private activetedRoute: ActivatedRoute) {
@@ -45,13 +46,13 @@ export class AlunoComponent implements OnInit {
       this.alunoService.create(this.alunoForm.value).subscribe(() => {
         this.router.navigate(['/alunos']);
       }, error => {
-        console.error(error);
+        this.message = error.message;
       });
     } else {
       this.alunoService.update(this.alunoForm.value).subscribe(() => {
         this.router.navigate(['/alunos']);
       }, error => {
-        console.error(error);
+        this.message = error.message;
       });
     }
   }

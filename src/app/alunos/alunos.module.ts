@@ -10,6 +10,7 @@ import { AlunosComponent } from './components/alunos/alunos.component';
 import { AlunosService } from './services/alunos.service';
 
 import { AppPipesModule } from '../app-pipes/app-pipes.module';
+
 import { AlunoComponent } from './components/aluno/aluno.component';
 
 @NgModule({
@@ -19,7 +20,7 @@ import { AlunoComponent } from './components/aluno/aluno.component';
     AppPipesModule,
     HttpClientModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
   ],
   declarations: [AlunosComponent, AlunoComponent],
   providers: [AlunosService]
